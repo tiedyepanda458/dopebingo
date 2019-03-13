@@ -1,5 +1,5 @@
 {
-  "name": "@HashemKhalifa/webpack-react-boilerplate",
+  "name": "textaccuracy",
   "version": "1.0.0",
   "description": "Text Accuracy Calculator",
   "main": "index.js",
