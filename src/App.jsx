@@ -120,7 +120,8 @@ export default hot(module)(App);
 
 const textstyle = {
 	//height: '200px'
-	flex: 1
+	flex: 1,
+	minHeight: '100px'
 }
 
 function ciEquals(a, b) {
