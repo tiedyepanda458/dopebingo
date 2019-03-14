@@ -78,7 +78,7 @@ class App extends Component {
   render() {
     return (
     	<div style={{flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '100%'}}>
-			<div style={{display: 'flex', flex:1, flexDirection: 'row', width: '100%', paddingBottom: '100px'}}>
+			<div style={{display: 'flex', flex:1, flexDirection: 'row', width: '100%', paddingBottom: '50px'}}>
 				<div style={{display: 'flex', flexDirection: 'column', justifyContent:'start', width: '50%', maxHeight: '100vh'}}>
 			      	<h2>Reference Text:</h2>
 			        <textarea spellcheck="false" type="text" value={this.state.ref} onChange={this.refChange} style={textstyle}/>
