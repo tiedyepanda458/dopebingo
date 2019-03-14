@@ -77,34 +77,39 @@ class App extends Component {
 
   render() {
     return (
-		<div style={{display: 'flex', flexDirection: 'row', width: '100%'}}>
-			<div style={{display: 'flex', flexDirection: 'column', flex: 'grow', width: '50%'}}>
-		      	<h2>Reference Text:</h2>
-		        <textarea spellcheck="false" type="text" value={this.state.ref} onChange={this.refChange} style={textstyle}/>
-		      	<h2>Test Text:</h2>
-		        <textarea spellcheck="false" type="text" value={this.state.test} onChange={this.testChange} style={textstyle}/>
-		        {this.state.calculating ?
-		        	(<p>Calculating....</p>) : 
-		        	(<div>
-		        		<p><b>Words Correct:</b> {this.state.correct}&nbsp;
-		        			<b>Words Misspelled:</b> {this.state.mspell}&nbsp;
-		        			<b>Words Skipped:</b> {this.state.skipped}&nbsp;
-		        			<b>Words Added:</b> {this.state.added}
-		        		</p>
-		        		<p><b>Accuracy:</b> {this.state.accuracy}%</p>
-		        	</div>)
-		        }
-		    	<p>Punctuation is ignored. Accuracy is calculated as <code>(words correct / (words correct + total errors)</code></p>
+    	<div style={{flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '100%'}}>
+			<div style={{display: 'flex', flex:1, flexDirection: 'row', width: '100%', paddingBottom: '100px'}}>
+				<div style={{display: 'flex', flexDirection: 'column', justifyContent:'start', width: '50%', maxHeight: '100vh'}}>
+			      	<h2>Reference Text:</h2>
+			        <textarea spellcheck="false" type="text" value={this.state.ref} onChange={this.refChange} style={textstyle}/>
+			      	<h2>Test Text:</h2>
+			        <textarea spellcheck="false" type="text" value={this.state.test} onChange={this.testChange} style={textstyle}/>
+			        {this.state.calculating ?
+			        	(<p>Calculating....</p>) : 
+			        	(<div>
+			        		<p><b>Words Correct:</b> {this.state.correct}&nbsp;
+			        			<b>Words Misspelled:</b> {this.state.mspell}&nbsp;
+			        			<b>Words Skipped:</b> {this.state.skipped}&nbsp;
+			        			<b>Words Added:</b> {this.state.added}
+			        		</p>
+			        		<p><b>Accuracy:</b> {this.state.accuracy}%</p>
+			        	</div>)
+			        }
+			    	<p>Punctuation is ignored. Accuracy is calculated as <code>(words correct / (words correct + total errors)</code></p>
+			    </div>
+			    <div style={{marginLeft: '50px', width: '40%'}}>
+			    	{this.state.toolong ? 
+				    	(<div>
+				    		<p>Computation Time Exceeded 50 Milliseconds</p>
+				    		<button onClick={this.calcunlimited}>Compute Anyway</button>
+				    	</div>) :
+					    (<p dangerouslySetInnerHTML={{__html: this.state.html}}></p>)
+					}
+				</div>
 		    </div>
-		    <div style={{marginLeft: '50px', width: '40%'}}>
-		    	{this.state.toolong ? 
-			    	(<div>
-			    		<p>Computation Time Exceeded 50 Milliseconds</p>
-			    		<button onClick={this.calcunlimited}>Compute Anyway</button>
-			    	</div>) :
-				    (<p dangerouslySetInnerHTML={{__html: this.state.html}}></p>)
-				}
-			</div>
+	    	<div style={{position:'absolute', left:0, bottom:0, display:'flex', flexDirection: 'row', width: '100%', justifyContent: 'center', height: '50px'}}>
+	    		<p>Created by Bridger Holly | <a href="https://github.com/tiedyepanda458/textaccuracy">Source Code</a></p>
+	    	</div>
 	    </div>
     );
   }
@@ -114,7 +119,8 @@ export default hot(module)(App);
 
 
 const textstyle = {
-	height: '200px'
+	//height: '200px'
+	flex: 1
 }
 
 function ciEquals(a, b) {
