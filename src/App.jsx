@@ -81,9 +81,9 @@ class App extends Component {
 			<div style={{display: 'flex', flex:1, flexDirection: 'row', width: '100%', paddingBottom: '50px'}}>
 				<div style={{display: 'flex', flexDirection: 'column', justifyContent:'start', width: '50%', maxHeight: '100vh'}}>
 			      	<h2>Reference Text:</h2>
-			        <textarea spellcheck="false" type="text" value={this.state.ref} onChange={this.refChange} style={textstyle}/>
+			        <textarea spellCheck="false" type="text" value={this.state.ref} onChange={this.refChange} style={textstyle}/>
 			      	<h2>Test Text:</h2>
-			        <textarea spellcheck="false" type="text" value={this.state.test} onChange={this.testChange} style={textstyle}/>
+			        <textarea spellCheck="false" type="text" value={this.state.test} onChange={this.testChange} style={textstyle}/>
 			        {this.state.calculating ?
 			        	(<p>Calculating....</p>) : 
 			        	(<div>
@@ -130,62 +130,6 @@ function ciEquals(a, b) {
         : a === b;
 }
 
-var maxoffset = 5;
-var maxcount = 5;
-
-function calc(ref, test, offset, count) {
-
-	let x = ref ? (ref.length > 0 ? ref[0] : null) : null;
-	let y = test ? (test.length > 0 ? test[0] : null) : null;
-
-
-	//console.log(x + "   " + y + "   " + offset);
-
-	if (!x && !y) return {correct:0, mspell: 0, skipped: 0, added: 0, html: ''};
-
-	// case where one is run out
-	if (!x) {
-		return {correct: 0, mspell: 0, skipped: 0, added: test.length, html: '<font color="red"><strike>' + test.join(" ") + '</strike></font>'}
-	}
-	else if (!y) {
-		return {correct: 0, mspell: 0, skipped: ref.length, added: 0, html: '<font color="blue">^<sub>' + ref.join(" ") + '</sub></font>'}
-	}
-
-	if(ciEquals(x, y)) {
-		let val = calc(ref.slice(1), test.slice(1), 0, 0);
-		//console.log("words " + x + " and " + y + " are equal");
-		if (!val) return null;
-
-		return {correct: val.correct + 1, mspell: val.mspell, skipped: val.skipped, added: val.added, html: y + " " + val.html};
-	}
-	else {
-		let add = offset >= 0 && offset < maxoffset && count == 0 ?
-			calc(x ? ref : null, y ? test.slice(1) : null, offset + 1, 0) : null;
-		let miss = count < maxcount ?
-			calc(x ? ref.slice(1) : null, y ? test.slice(1) : null, offset, count + 1) : null;
-		let skip = offset <= 0 && offset > maxoffset * -1 && count == 0 ?
-			calc(x ? ref.slice(1): null, y ? test : null, offset - 1, 0) : null;
-
-		if (!add && !miss && !skip) {
-			return null;
-		}
-
-		let addsum = add ? add.mspell + add.skipped + add.added - add.correct : Infinity;
-		let misssum = miss ? miss.mspell + miss.skipped + miss.added - miss.correct : Infinity;
-		let skipsum = skip ? skip.mspell + skip.skipped + skip.added - skip.correct : Infinity;
-
-		if (addsum < misssum && addsum < skipsum) {
-			return {correct: add.correct, mspell: add.mspell, skipped: add.skipped, added: add.added + 1, html: '<font color="red"><strike>' + y + '</strike></font> ' + add.html}
-		}
-		else if (skipsum < misssum) {
-			return {correct: skip.correct, mspell: skip.mspell, skipped: skip.skipped + 1, added: skip.added, html: '<font color="blue">^<sub>' + x + '</sub></font> ' + skip.html}
-		}
-		else {
-			return {correct: miss.correct, mspell: miss.mspell + 1, skipped: miss.skipped, added: miss.added, html: '<font color="orange">' + y + '</font> ' + miss.html}
-		}
-	}
-}
-
 function calcsync(ref, test, maxlag, maxtime) {
 	let startTime = new Date();
 	// queue to put values to try in
@@ -229,14 +173,20 @@ function calcsync(ref, test, maxlag, maxtime) {
 			continue;
 		}
 
-		if (!val.lastm) {
-			// skipped word
-			if (val.dir <= 0) queue.push({...val, dir: -1, refi: val.refi + 1, skipped: val.skipped + 1, html: val.html + '<font color="blue">^<sub>' + ref[val.refi] + '</sub></font> '});
-			// added word
-			if (val.dir >= 0) queue.push({...val, dir: 1, testi: val.testi + 1, added: val.added + 1, html: val.html + '<font color="red"><strike>' + test[val.testi] + '</strike></font> '});
+		// check for duplicates before adding
+		let sk = true;
+		let ad = true;
+		let mis = true;
+		for (let i = 0; i < queue.length; i++) {
+			if (queue[i].refi == val.refi + 1 && queue[i].testi == val.testi) sk = false;
+			if (queue[i].refi == val.refi && queue[i].testi == val.testi + 1) ad = false;
+			if (queue[i].refi == val.refi + 1 && queue[i].testi == val.testi + 1) mis = false;
 		}
-		// misspelled word
-		queue.push({...val, lastm: true, refi: val.refi + 1, testi: val.testi + 1, mspell: val.mspell + 1, html: val.html + '<font color="orange">' + test[val.testi] + '</font> '});
+
+		// add non-duplicates to queue
+		if (sk) queue.push({...val, dir: -1, refi: val.refi + 1, skipped: val.skipped + 1, html: val.html + '<font color="blue">^<sub>' + ref[val.refi] + '</sub></font> '});
+		if (ad) queue.push({...val, dir: 1, testi: val.testi + 1, added: val.added + 1, html: val.html + '<font color="red"><strike>' + test[val.testi] + '</strike></font> '});
+		if (mis) queue.push({...val, lastm: true, refi: val.refi + 1, testi: val.testi + 1, mspell: val.mspell + 1, html: val.html + '<font color="orange">' + test[val.testi] + '</font> '});
 
 		if (maxtime < Infinity && (new Date()) - startTime > maxtime) {
 			return {toolong: true};
