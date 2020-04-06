@@ -1,3 +1,3 @@
-# Text Accuracy Calculator
+# Online Bingo Game
 
-Site for determining the accuracy of a given text, given a reference to compare with.
+Play bingo with clues pulled from a Google Spreadsheet

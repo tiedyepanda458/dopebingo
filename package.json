@@ -1,13 +1,13 @@
 {
-  "name": "textaccuracy",
+  "name": "dopebingo",
   "version": "1.0.0",
-  "description": "Text Accuracy Calculator",
+  "description": "Online Bingo Player",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack --fix"
   },
-  "repository": "https://github.com/tiedyepanda458/textaccuracy.git",
+  "repository": "https://github.com/tiedyepanda458/dopebingo.git",
   "author": "tiedyepanda458",
   "private": false,
   "engines": {
