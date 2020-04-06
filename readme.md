@@ -1,3 +1,3 @@
 # Online Bingo Game
 
-Play bingo with clues pulled from a Google Spreadsheet
+Play bingo with clues on github
