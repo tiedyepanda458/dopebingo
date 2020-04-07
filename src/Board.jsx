@@ -10,7 +10,7 @@ class Play extends Component {
   render() {
 
     const tiles = this.props.gameboard.map((item, i) => (
-      <Tile key={i} mark={() => this.props.mark(i)} text={item.text} marked={item.marked}></Tile>
+      <Tile key={i} mark={() => this.props.mark(i)} text={item.text} marked={item.marked} bingo={item.bingo}></Tile>
     ))
 
     return (

@@ -28,8 +28,8 @@ class Play extends Component {
   buildGameBoard() {
     var clueArray = this.findClues();
     shuffle(clueArray);
-    var board = clueArray.slice(0, 24).map((val, i) => ({text:val, marked:false}));
-    board.splice(12, 0, {text: "FREE SPACE", marked: true})
+    var board = clueArray.slice(0, 24).map((val, i) => ({text:val, marked:false, bingo: false}));
+    board.splice(12, 0, {text: "FREE SPACE", marked: true, bingo: false})
     localStorage.setItem("gameboard",JSON.stringify(board));
     this.setState({gameboard: board, bingos: 0});
   }
@@ -43,24 +43,36 @@ class Play extends Component {
   markTile(index) {
     if (index != 12)
     this.setState(state => {
-      const board = state.gameboard.map((val, i) => {
-        if (i == index) return {...val, marked:!val.marked};
-        else return val;
+      var board = state.gameboard.map((val, i) => {
+        if (i == index) return {...val, marked:!val.marked, bingo:false};
+        else return {...val, bingo:false};
       });
-      localStorage.setItem("gameboard", JSON.stringify(board));
 
       var countBingos = 0;
       // check whether the player has won
       for (let i = 0; i < 5; i++) {
         // check rows and columns
-        if (!board.slice(i*5, i*5+5).some(x => !x.marked)) countBingos++;
-        if (!board.filter((x, ind) => (i+ind)%5 == 0).some(x => !x.marked)) countBingos++;
+        if (!board.slice(i*5, i*5+5).some(x => !x.marked)) {
+          countBingos++;
+          board = board.map((t, ind) => ({ ...t, bingo:t.bingo||(ind >= i*5 && ind < i*5+5)}));
+        }
+        if (!board.filter((x, ind) => (i+ind)%5 == 0).some(x => !x.marked)) {
+          countBingos++;
+          board = board.map((t, ind) => ({ ...t, bingo:t.bingo||(i+ind)%5 == 0}));
+        }
       }
-      if (!board.filter((x, i) => i%6 == 0).some(x => !x.marked)) countBingos++;
-      if (!board.filter((x, i) => i == 4 || i == 8 || i == 12 || i == 16 || i == 20).some(x => !x.marked)) countBingos++;
+      if (!board.filter((x, i) => i%6 == 0).some(x => !x.marked)) {
+        countBingos++;
+        board = board.map((t, ind) => ({ ...t, bingo:t.bingo||ind%6 == 0}));
+      }
+      if (!board.filter((x, i) => i == 4 || i == 8 || i == 12 || i == 16 || i == 20).some(x => !x.marked)) {
+        countBingos++;
+        board = board.map((t, ind) => ({ ...t, bingo:t.bingo||ind == 4 || ind == 8 || ind == 12 || ind == 16 || ind == 20}));
+      }
 
       if (countBingos > this.state.bingos) this.green.play();
 
+      localStorage.setItem("gameboard", JSON.stringify(board));
       return {
         gameboard: board,
         bingos: countBingos
