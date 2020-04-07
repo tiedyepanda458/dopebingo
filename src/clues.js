@@ -14,7 +14,7 @@ const clues = [
     "Someone falls asleep",
     "Prof accidentally leaves call",
     "Someone typing, possibly with a hammer",
-    "Embarrassing Poster in the Background",
+    "Embarrassing Background",
     "Someone clearly has Corona (coughing fit)",
     "\"Can everyone go on mute?\"",
     "Guest Lecturer 2.0",
