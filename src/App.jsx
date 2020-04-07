@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
+import Play from './Play.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -9,9 +10,7 @@ class App extends Component {
 
   render() {
     return (
-    	<div style={{flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '100%'}}>
-			Straight Engire Bingo
-	    </div>
+		<div><Play /></div>
     );
   }
 }

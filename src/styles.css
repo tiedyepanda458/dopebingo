@@ -1,0 +1,13 @@
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 15px;
+    width:150px;
+    height:150px;
+}
+
+th:hover {
+    cursor: pointer;
+}
