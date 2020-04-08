@@ -29,7 +29,8 @@ const clues = [
     "Prof ignores someone with their hand up",
     "Someone gets up and leaves while their video is on",
     "Prof gets distracted by something in someone's video",
-    "Student shows off their pet/child"
+    "Student shows off their pet/child",
+    "Someone mentions a timezone"
 ];
 
 export default clues
