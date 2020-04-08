@@ -25,7 +25,9 @@ const clues = [
     "Pajamas",
     "Prof Catches Corona",
     "Someone can't figure out how to put their hand down",
-    "Person raises physical hand instead of Zoom hand"
+    "Person raises physical hand instead of Zoom hand",
+    "Prof ignores someone with their hand up",
+    "Someone gets up and leaves while their video is on"
 ];
 
 export default clues
