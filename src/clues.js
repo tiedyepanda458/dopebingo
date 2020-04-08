@@ -27,7 +27,9 @@ const clues = [
     "Someone can't figure out how to put their hand down",
     "Person raises physical hand instead of Zoom hand",
     "Prof ignores someone with their hand up",
-    "Someone gets up and leaves while their video is on"
+    "Someone gets up and leaves while their video is on",
+    "Prof gets distracted by something in someone's video",
+    "Student shows off their pet/child"
 ];
 
 export default clues
