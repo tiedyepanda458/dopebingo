@@ -7,7 +7,6 @@ const clues = [
     "Forgets to record lecture",
     "Prof mutes themself and someone has to remind them",
     "\"Can you see this?\" (you can’t see it)",
-    "Forgets to send Zoom link",
     "Someone dings in > 10 min late",
     "Coronavirus Joke",
     "\"Stay Healthy\", \"Hope everyone’s healthy\", etc.",
