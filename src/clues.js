@@ -52,7 +52,8 @@ const clues = [
             "Technical Difficulties",
             "Coronavirus/Social Distancing Joke",
             "Unnecessarily Flashy Shuffle",
-            "Things are off camera"
+            "Things are off camera",
+            'They do or teach a trick Anoush taught them"
         ]
     }
 ];
