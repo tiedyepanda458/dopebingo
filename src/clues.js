@@ -59,7 +59,7 @@ const clues = [
             "Forgets they're on camera",
             "\"This one is really simple\"",
             "\"If this were live\"",
-            "\"Did you get that?\""
+            "\"Did you get that?\"",
             "UV",
             "Peter",
             "Instagram Live"
