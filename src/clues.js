@@ -58,7 +58,8 @@ const clues = [
             "Pick a Card",
             "Forgets they're on camera",
             "\"This one is really simple\"",
-            "\"If this were live\""
+            "\"If this were live\"",
+            "\"Did you get that?\""
         ]
     }
 ];
