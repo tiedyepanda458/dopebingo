@@ -56,7 +56,8 @@ const clues = [
             "They do or teach a trick Anoush taught them",
             "Weird Argument",
             "Pick a Card",
-            "Forgets they're on camera"
+            "Forgets they're on camera",
+            "\"This one is really simple\""
         ]
     }
 ];
