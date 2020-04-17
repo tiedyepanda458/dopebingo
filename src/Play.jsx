@@ -56,48 +56,47 @@ class Play extends Component {
   @boundMethod
   markTile(index) {
     if (index != 12)
-    this.setState(state => {
-      var board = state.gameboard.map((val, i) => {
-        if (i == index) return {...val, marked:!val.marked, bingo:false};
-        else return {...val, bingo:false};
-      });
+      this.setState(state => {
+        var board = state.gameboard.map((val, i) => {
+            if (i == index) return {...val, marked:!val.marked, bingo:false};
+            else return {...val, bingo:false};
+        });
 
-      var countBingos = 0;
-      // check whether the player has won
-      for (let i = 0; i < 5; i++) {
-        // check rows and columns
-        if (!board.slice(i*5, i*5+5).some(x => !x.marked)) {
-          countBingos++;
-          board = board.map((t, ind) => ({ ...t, bingo:t.bingo||(ind >= i*5 && ind < i*5+5)}));
+        var countBingos = 0;
+        // check whether the player has won
+        for (let i = 0; i < 5; i++) {
+          // check rows and columns
+          if (!board.slice(i*5, i*5+5).some(x => !x.marked)) {
+            countBingos++;
+            board = board.map((t, ind) => ({ ...t, bingo:t.bingo||(ind >= i*5 && ind < i*5+5)}));
+          }
+          if (!board.filter((x, ind) => (i+ind)%5 == 0).some(x => !x.marked)) {
+            countBingos++;
+            board = board.map((t, ind) => ({ ...t, bingo:t.bingo||(i+ind)%5 == 0}));
+          }
         }
-        if (!board.filter((x, ind) => (i+ind)%5 == 0).some(x => !x.marked)) {
+        if (!board.filter((x, i) => i%6 == 0).some(x => !x.marked)) {
           countBingos++;
-          board = board.map((t, ind) => ({ ...t, bingo:t.bingo||(i+ind)%5 == 0}));
+          board = board.map((t, ind) => ({ ...t, bingo:t.bingo||ind%6 == 0}));
         }
-      }
-      if (!board.filter((x, i) => i%6 == 0).some(x => !x.marked)) {
-        countBingos++;
-        board = board.map((t, ind) => ({ ...t, bingo:t.bingo||ind%6 == 0}));
-      }
-      if (!board.filter((x, i) => i == 4 || i == 8 || i == 12 || i == 16 || i == 20).some(x => !x.marked)) {
-        countBingos++;
-        board = board.map((t, ind) => ({ ...t, bingo:t.bingo||ind == 4 || ind == 8 || ind == 12 || ind == 16 || ind == 20}));
-      }
+        if (!board.filter((x, i) => i == 4 || i == 8 || i == 12 || i == 16 || i == 20).some(x => !x.marked)) {
+          countBingos++;
+          board = board.map((t, ind) => ({ ...t, bingo:t.bingo||ind == 4 || ind == 8 || ind == 12 || ind == 16 || ind == 20}));
+        }
 
-      if (countBingos > this.state.bingos) this.green.play();
+        if (countBingos > this.state.bingos) this.green.play();
 
-      localStorage.setItem("gameboard", JSON.stringify(board));
-      return {
-        gameboard: board,
-        bingos: countBingos
-      };
+        localStorage.setItem("gameboard", JSON.stringify(board));
+        return {
+          gameboard: board,
+          bingos: countBingos
+        };
     })
   }
 
   @boundMethod
   handleSetChange(i) {
     this.setState({set: i});
-    localStorage.setItem("set", JSON.stringify(this.state.set));
   }
 
   render() {

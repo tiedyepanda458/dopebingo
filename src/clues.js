@@ -48,7 +48,9 @@ const clues = [
             "Rubiks cube",
             "String / rope trick",
             "Here then there",
-            "Double lift"
+            "Double lift",
+            "Technical Difficulties",
+            "Coronavirus/Social Distancing Joke"
         ]
     }
 ];
