@@ -53,7 +53,9 @@ const clues = [
             "Coronavirus/Social Distancing Joke",
             "Unnecessarily Flashy Shuffle",
             "Things are off camera",
-            'They do or teach a trick Anoush taught them"
+            "They do or teach a trick Anoush taught them",
+            "Weird Argument",
+            "Pick a Card"
         ]
     }
 ];
