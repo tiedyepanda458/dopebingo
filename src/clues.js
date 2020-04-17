@@ -50,7 +50,8 @@ const clues = [
             "Here then there",
             "Double lift",
             "Technical Difficulties",
-            "Coronavirus/Social Distancing Joke"
+            "Coronavirus/Social Distancing Joke",
+            "Unnecessarily Flashy Shuffle",
         ]
     }
 ];
