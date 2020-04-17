@@ -60,6 +60,9 @@ const clues = [
             "\"This one is really simple\"",
             "\"If this were live\"",
             "\"Did you get that?\""
+            "UV",
+            "Peter",
+            "Instagram Live"
         ]
     }
 ];
