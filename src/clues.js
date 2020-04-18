@@ -73,6 +73,7 @@ const clues = [
             "Unironic absolutely ridiculous idea",
             "Someone dips early",
             "Someone brings up Trembly",
+            "\"Don't tell Raina\"",
             
         ]
     }
