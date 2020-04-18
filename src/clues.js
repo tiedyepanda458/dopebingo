@@ -74,7 +74,24 @@ const clues = [
             "Someone dips early",
             "Someone brings up Trembly",
             "\"Don't tell Raina\"",
-            
+            "Someone interrupts in the background",
+            "Pammons' mic has a stroke",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
         ]
     }
 ];
