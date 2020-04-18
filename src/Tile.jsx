@@ -9,8 +9,9 @@ class Play extends Component {
 
   render() {
     return (
-    	<th onClick={this.props.mark} style={{backgroundColor: this.props.marked ? this.props.bingo ? "red" : "green" : "white"}}>
-        {this.props.text}
+    	<th onClick={this.props.mark} style={{backgroundColor: this.props.marked ? this.props.bingo ? "red" : "green" : "white", position:"relative"}}>
+          {this.props.text}
+          <div style={{position:"absolute", left:0, right:0, top:0, bottom:0}}></div>
       </th>
     );
   }
