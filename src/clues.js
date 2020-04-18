@@ -64,6 +64,17 @@ const clues = [
             "Peter",
             "Instagram Live"
         ]
+    },
+    {
+        title: "DFR Meeting",
+        clues: [
+            "Someone talks over someone else",
+            "\"Lets get back on topic\"",
+            "Unironic absolutely ridiculous idea",
+            "Someone dips early",
+            "Someone brings up Trembly",
+            
+        ]
     }
 ];
 
