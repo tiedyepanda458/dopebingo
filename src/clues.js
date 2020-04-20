@@ -33,7 +33,8 @@ const clues = [
             "Prof gets distracted by something in someone's video",
             "Student shows off their pet/child",
             "Someone mentions a timezone",
-            "Someone is eating"
+            "Someone is eating",
+            "Zoom class runs over time"
         ]
     },
     {
