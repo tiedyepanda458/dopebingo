@@ -101,7 +101,7 @@ const clues = [
             "Global Pandemic",
             "Recession",
             "Wildfires",
-            "World War 3 \(almost\)",
+            "World War 3 (almost)",
             "A Country Leaves the European Union",
             "Trump gets reelected",
             "Royals runa way to another country",
