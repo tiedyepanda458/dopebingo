@@ -94,6 +94,35 @@ const clues = [
             "",
             ""
         ]
+    },
+    {
+        title: "The Apocalypse",
+        clues: [
+            "Global Pandemic",
+            "Recession",
+            "Wildfires",
+            "World War 3 \(almost\)",
+            "A Country Leaves the European Union",
+            "Trump gets reelected",
+            "Royals runa way to another country",
+            "North Korea starts a war",
+            "Trump Gets Impeached",
+            "Famous Person Dies",
+            "Mail-In Voting for Presidential Election",
+            "Riots for BLM",
+            "Riots once gevernment benefits and no eveictions go away",
+            "Second wave of Coronavirus in the US",
+            "Yosemite goes boom",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     }
 ];
 
