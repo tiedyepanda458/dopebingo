@@ -123,6 +123,35 @@ const clues = [
             "",
             ""
         ]
+    },
+    {
+        title: "Debate",
+        clues: [
+            "Sleepy Joe",
+            "\"Jina\"",
+            "Excuse me... excuse me... *Points Finger*",
+            "*Weirdly aggressive sniff*",
+            "Mentions Obama or Clinton",
+            "Mentions the wall",
+            "\"Fake News\"",
+            "Questions validity of the election",
+            "Talks about how black people like them",
+            "Trump calls something the worst",
+            "Trump Compliments himself",
+            "\"The radical left\"",
+            "\"Law and order\"",
+            "\"Anarchists\"",
+            "My friend (brutal dictator)",
+            "\"The failed Obama administration\"",
+            "\"Cmon man\"",
+            "Scranton PA",
+            "$750",
+            "\"My friend/pal Barak\"",
+            "The full URL of a website",
+            "\"WRONG\"",
+            "\"Biden lags\"",
+            "\"Build Back Better\""
+        ]
     }
 ];
 
